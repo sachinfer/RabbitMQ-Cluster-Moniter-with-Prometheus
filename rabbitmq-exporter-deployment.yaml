@@ -17,7 +17,11 @@ spec:
       - name: rabbitmq-exporter
         image: kbudde/rabbitmq-exporter
         env:
+        - name: RABBITMQ_USER
+          value: guest       # Update the username here
+        - name: RABBITMQ_PASSWORD
+          value: guest     # Update the password here
         - name: RABBITMQ_URL
-          value: http://<rabbitmq-username>:<rabbitmq-password>@rabbitmq.<your-namespace>.svc.cluster.local:15672
+          value: "amqp://guest:guest@rabbitmq:5672"  # Use the internal service DNS name
         ports:
         - containerPort: 9419
